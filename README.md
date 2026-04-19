@@ -323,7 +323,7 @@ ADR wraps existing reasoning frameworks by governing their depth. It does not re
 ### Claude
 
 **Claude.ai (web/mobile/desktop):**
-Navigate to Settings > Customize > Skills, click the "+" button, then "+ Create skill." Upload SKILL.MD
+Navigate to Settings > Customize > Skills, click the "+" button, then "+ Create skill." Upload the `adaptive-depth-reasoning/` folder (containing `SKILL.md` and `theory.md`). Toggle the skill on. Requires Code execution to be enabled in Settings > Capabilities.
 
 **Claude Code (terminal agent):**
 Copy the skill folder to your personal skills directory. The skill activates automatically when Claude Code detects a matching task, or invoke it explicitly with `/adaptive-depth-reasoning`.
@@ -410,16 +410,17 @@ Copy the content of `SKILL.md` (without the YAML frontmatter between `---` marke
 ## Project Structure
 
 ```
-README.md         # This file
-SKILL.md          # Skill definition (usable as system prompt)
-theory.md         # Theoretical foundations and citations
+adaptive-depth-reasoning/
+├── README.md         # This file
+├── SKILL.md          # Skill definition (usable as system prompt)
+└── theory.md         # Theoretical foundations and citations
 ```
 
 ## Acknowledgments
 
-This framework builds on ideas from the broader Recurrent-Depth Transformer research community. ADR's contribution is the translation of architectural intuitions into a prompt-level reasoning protocol -- a translation that is analogical, not deductive, and unvalidated.
+This framework builds on ideas from the OpenMythos project [8], the RYS (Repeat Your Self) empirical work on LLM Neuroanatomy [9,10], and the broader Recurrent-Depth Transformer research community. The RYS work provides the strongest empirical evidence for the architectural principles ADR translates to prompt-level reasoning: three-zone functional anatomy, circuit-level reasoning structures, and measurable diminishing returns from additional computation depth.
 
-For the full theoretical treatment -- including the RDT recurrence equations, spectral stability constraints, ACT halting mechanisms, and how each maps (as metaphor) to ADR -- see [`theory.md`](theory.md).
+For the full theoretical treatment -- including RDT recurrence equations, spectral stability, ACT halting, RYS heatmaps, and how each maps (as metaphor) to ADR -- see [`theory.md`](theory.md).
 
 ## References
 
@@ -436,3 +437,9 @@ For the full theoretical treatment -- including the RDT recurrence equations, sp
 [6] S. Gao, A. A. Tong, and B. Wu, "Training large language models to reason in a continuous latent space," arXiv preprint arXiv:2412.06769, 2024.
 
 [7] S. Bae, J. Kim, and S. Yun, "Relaxed recursive transformers: effective parameter sharing with layer-wise LoRA," arXiv preprint arXiv:2410.20672, 2024.
+
+[8] K. Gomez, "OpenMythos: a theoretical reconstruction of the Claude Mythos architecture," GitHub repository, 2026. [Online]. Available: https://github.com/kyegomez/OpenMythos
+
+[9] D. N. Ng, "LLM neuroanatomy: how I topped the LLM leaderboard without changing a single weight," 2026. [Online]. Available: https://dnhkng.github.io/posts/rys/
+
+[10] D. N. Ng, "LLM neuroanatomy II: modern LLM hacking and hints of a universal language?," 2026. [Online]. Available: https://dnhkng.github.io/posts/rys-ii/
