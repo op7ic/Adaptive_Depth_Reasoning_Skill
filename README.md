@@ -418,7 +418,7 @@ adaptive-depth-reasoning/
 
 ## Acknowledgments
 
-This framework builds on ideas from the OpenMythos project [8], the RYS (Repeat Your Self) empirical work on LLM Neuroanatomy [9,10], and the broader Recurrent-Depth Transformer research community. The RYS work provides the strongest empirical evidence for the architectural principles ADR translates to prompt-level reasoning: three-zone functional anatomy, circuit-level reasoning structures, and measurable diminishing returns from additional computation depth.
+This framework builds on ideas from the OpenMythos project [8], the RYS (Repeat Your Self) empirical work on LLM Neuroanatomy [9,10,11], and the broader Recurrent-Depth Transformer research community. The RYS work provides the strongest empirical evidence for the architectural principles ADR translates to prompt-level reasoning: three-zone functional anatomy, circuit-level reasoning structures, measurable diminishing returns from additional depth, and a universal format-agnostic reasoning space confirmed across five architecturally distinct models.
 
 For the full theoretical treatment -- including RDT recurrence equations, spectral stability, ACT halting, RYS heatmaps, and how each maps (as metaphor) to ADR -- see [`theory.md`](theory.md).
 
@@ -443,3 +443,5 @@ For the full theoretical treatment -- including RDT recurrence equations, spectr
 [9] D. N. Ng, "LLM neuroanatomy: how I topped the LLM leaderboard without changing a single weight," 2026. [Online]. Available: https://dnhkng.github.io/posts/rys/
 
 [10] D. N. Ng, "LLM neuroanatomy II: modern LLM hacking and hints of a universal language?," 2026. [Online]. Available: https://dnhkng.github.io/posts/rys-ii/
+
+[11] D. N. Ng, "LLM neuroanatomy III: do LLMs break the Sapir-Whorf hypothesis?," 2026. [Online]. Available: https://dnhkng.github.io/posts/sapir-whorf/

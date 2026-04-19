@@ -49,6 +49,32 @@ what language you are saying it in. This "universal thinking space" exists
 in the middle layers and corresponds exactly to the region where layer
 duplication improves reasoning.
 
+In Part III [11], this was scaled to a rigorous test across five
+architecturally distinct models from five organizations (Qwen3.5-27B,
+MiniMax M2.5, GLM-4.7, Gemma-4 31B, GPT-OSS-120B), eight languages
+(English, French, Chinese, Japanese, Korean, Arabic, Russian, Hindi), and
+eight topics. All five models showed the same three-phase pattern: language
+identity dominates in early layers, semantic content dominates in the
+mid-stack reasoning layers (with language similarity dropping to
+approximately zero), and language specificity returns in decoding layers.
+
+Critically, Part III extended this beyond natural language to code and math.
+Python functions, LaTeX equations, and English descriptions of the same
+concept (e.g., kinetic energy as "0.5 * m * v ** 2", as E_k = 1/2 mv^2,
+and as "half the mass times velocity squared") converge to the same region
+of the mid-stack representational space despite sharing zero surface tokens.
+The reasoning layers are not just language-agnostic but modality-agnostic:
+they encode meaning regardless of whether it arrives as natural language,
+executable code, or mathematical notation.
+
+This has a direct implication for the claim that RYS works: the layers that
+can be profitably duplicated are exactly the layers where format-agnostic
+reasoning occurs. If a layer operates in this universal space, its input and
+output distributions are similar enough that looping back does not cause
+catastrophic distribution mismatch. If a layer is doing format-specific
+encoding or decoding, looping back feeds decoded representations into a
+layer that expects abstract ones. The model breaks.
+
 **Metaphor for ADR:** ADR's three-stage structure (Classify/Loop/Commit)
 mirrors this anatomy. Classification is encoding (understanding the problem).
 The reasoning loop is the mid-stack (thinking in abstract space). Committing
@@ -105,10 +131,14 @@ value remains a tunable parameter, not a derived constant.
 ### Generality Across Architectures
 
 RYS has been tested on Qwen2-72B, Qwen3.5-27B, Llama-3-70B, Phi-3-medium,
-and GLM-4.7 [9,10]. All show the same general pattern: a mid-stack reasoning
-region where layer duplication improves performance, bounded by encoding and
-decoding regions where duplication degrades it. The specific boundaries
-differ per architecture, but the structural principle holds.
+and GLM-4.7 [9,10]. The three-zone anatomy has been independently confirmed
+via hidden-state similarity analysis across five architecturally distinct
+models from five organizations, including dense transformers and mixture-of-
+experts architectures with up to 256 experts [11]. All show the same general
+pattern: a mid-stack reasoning region where representations are organized by
+semantic content rather than surface format, bounded by encoding and decoding
+regions. The specific boundaries differ per architecture, but the structural
+principle is convergent, not architecture-specific.
 
 ## Theoretical Foundations: Recurrent-Depth Transformers
 
@@ -256,3 +286,7 @@ diminishing returns thereafter.
 [10] D. N. Ng, "LLM neuroanatomy II: modern LLM hacking and hints of a
      universal language?," 2026. [Online]. Available:
      https://dnhkng.github.io/posts/rys-ii/
+
+[11] D. N. Ng, "LLM neuroanatomy III: do LLMs break the Sapir-Whorf
+     hypothesis?," 2026. [Online]. Available:
+     https://dnhkng.github.io/posts/sapir-whorf/
